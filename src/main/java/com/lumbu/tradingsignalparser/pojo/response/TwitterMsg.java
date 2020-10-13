@@ -2,6 +2,8 @@ package com.lumbu.tradingsignalparser.pojo.response;
 
 import java.io.Serializable;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.lumbu.tradingsignalparser.pojo.response.child.Entities;
 import com.lumbu.tradingsignalparser.pojo.response.child.User;
 
@@ -42,6 +44,13 @@ public class TwitterMsg implements Serializable {
 
 	private boolean is_quote_status;
 
+	private Long quoted_status_id;
+
+	private String quoted_status_id_str;
+
+	@JsonIgnore
+	private Object quoted_status;
+
 	private int retweet_count;
 
 	private int favorite_count;
@@ -49,6 +58,8 @@ public class TwitterMsg implements Serializable {
 	private boolean favorited;
 
 	private boolean retweeted;
+
+	private boolean possibly_sensitive;
 
 	private String lang;
 
@@ -196,6 +207,32 @@ public class TwitterMsg implements Serializable {
 		return this.is_quote_status;
 	}
 
+	public Long getQuoted_status_id() {
+		return quoted_status_id;
+	}
+
+	public void setQuoted_status_id(Long quoted_status_id) {
+		this.quoted_status_id = quoted_status_id;
+	}
+
+	public String getQuoted_status_id_str() {
+		return quoted_status_id_str;
+	}
+
+	public void setQuoted_status_id_str(String quoted_status_id_str) {
+		this.quoted_status_id_str = quoted_status_id_str;
+	}
+
+	@JsonIgnore
+	public Object getQuoted_status() {
+		return quoted_status;
+	}
+
+	@JsonProperty
+	public void setQuoted_status(Object quoted_status) {
+		this.quoted_status = quoted_status;
+	}
+
 	public void setRetweet_count(int retweet_count) {
 		this.retweet_count = retweet_count;
 	}
@@ -226,6 +263,14 @@ public class TwitterMsg implements Serializable {
 
 	public boolean getRetweeted() {
 		return this.retweeted;
+	}
+
+	public boolean isPossibly_sensitive() {
+		return possibly_sensitive;
+	}
+
+	public void setPossibly_sensitive(boolean possibly_sensitive) {
+		this.possibly_sensitive = possibly_sensitive;
 	}
 
 	public void setLang(String lang) {
