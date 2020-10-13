@@ -1,9 +1,9 @@
-package com.lumbu.tradingsignalparser.pojo;
+package com.lumbu.tradingsignalparser.pojo.response;
 
 import java.io.Serializable;
 
-import com.lumbu.tradingsignalparser.pojo.child.Entities;
-import com.lumbu.tradingsignalparser.pojo.child.User;
+import com.lumbu.tradingsignalparser.pojo.response.child.Entities;
+import com.lumbu.tradingsignalparser.pojo.response.child.User;
 
 public class TwitterMsg implements Serializable {
 	private String created_at;

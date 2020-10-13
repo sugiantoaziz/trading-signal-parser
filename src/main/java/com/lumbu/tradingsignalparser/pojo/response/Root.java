@@ -1,4 +1,4 @@
-package com.lumbu.tradingsignalparser.pojo;
+package com.lumbu.tradingsignalparser.pojo.response;
 
 import java.io.Serializable;
 import java.util.List;

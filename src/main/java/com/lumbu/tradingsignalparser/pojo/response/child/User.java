@@ -1,4 +1,4 @@
-package com.lumbu.tradingsignalparser.pojo.child;
+package com.lumbu.tradingsignalparser.pojo.response.child;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

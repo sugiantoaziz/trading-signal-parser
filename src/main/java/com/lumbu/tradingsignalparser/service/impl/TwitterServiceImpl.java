@@ -18,9 +18,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lumbu.tradingsignalparser.pojo.Root;
-import com.lumbu.tradingsignalparser.pojo.TwitterMsg;
 import com.lumbu.tradingsignalparser.pojo.request.RequestParams;
+import com.lumbu.tradingsignalparser.pojo.response.Root;
+import com.lumbu.tradingsignalparser.pojo.response.TwitterMsg;
 import com.lumbu.tradingsignalparser.service.TwitterService;
 
 @Service("twitterService")
