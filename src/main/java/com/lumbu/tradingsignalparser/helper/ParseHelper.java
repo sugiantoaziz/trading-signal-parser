@@ -10,7 +10,6 @@ import java.util.regex.Pattern;
 import org.apache.commons.lang3.StringUtils;
 
 import com.lumbu.tradingsignalparser.pojo.trading.Signal;
-import com.lumbu.tradingsignalparser.util.CommonUtils;
 
 public class ParseHelper {
 
@@ -24,7 +23,7 @@ public class ParseHelper {
 		return helper;
 	}
 
-	public static String parse(String tweet) {
+	public static Signal parse(String tweet) {
 		String newLine = "\n";
 		String space = " ";
 		String dot = ".";
@@ -35,7 +34,8 @@ public class ParseHelper {
 		String tp1 = splitString(tweet, newLine, tpIndex = 2);
 		String tp2 = tweet.toLowerCase().contains("tp2") ? splitString(tweet, newLine, tpIndex += 1) : "";
 		String tp3 = tweet.toLowerCase().contains("tp3") ? splitString(tweet, newLine, tpIndex += 1) : "";
-		BigDecimal sl = new BigDecimal(splitString(splitString(tweet, newLine, tpIndex += 1), dot, 1).trim());
+		String slLine = splitString(tweet, newLine, tpIndex += 1);
+		BigDecimal sl = new BigDecimal(StringUtils.split(slLine)[1]);
 
 		HashMap<String, BigDecimal> parsedOrder = subParse(order, space);
 		HashMap<String, BigDecimal> parsedTp1 = subParse(tp1, dot);
@@ -49,14 +49,14 @@ public class ParseHelper {
 		takeProfit.add(parsedTp3);
 
 		Signal signal = new Signal(instrument, parsedOrder, takeProfit, sl);
-		return CommonUtils.getInstance().objToJson(signal);
+		return signal;
 	}
 
 	private static HashMap<String, BigDecimal> subParse(String line, String pattern) {
 		String key = splitString(line, pattern, 0).toLowerCase();
 		BigDecimal value = new BigDecimal(0);
 		if (pattern.equals("."))
-			value = new BigDecimal(splitString(line, pattern, 1).concat(splitString(line, pattern, 2)));
+			value = new BigDecimal(splitString(line, pattern, 1).concat(".").concat(splitString(line, pattern, 2)));
 		else
 			value = new BigDecimal(splitString(line, pattern, 1));
 		HashMap<String, BigDecimal> parsedLine = new HashMap<String, BigDecimal>();

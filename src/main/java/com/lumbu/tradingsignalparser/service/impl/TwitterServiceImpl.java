@@ -22,6 +22,7 @@ import com.lumbu.tradingsignalparser.helper.ParseHelper;
 import com.lumbu.tradingsignalparser.pojo.request.RequestParams;
 import com.lumbu.tradingsignalparser.pojo.response.Root;
 import com.lumbu.tradingsignalparser.pojo.response.TwitterMsg;
+import com.lumbu.tradingsignalparser.pojo.trading.Signal;
 import com.lumbu.tradingsignalparser.service.TwitterService;
 
 @Service("twitterService")
@@ -38,7 +39,7 @@ public class TwitterServiceImpl implements TwitterService {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Override
-	public String callTwitter(RequestParams params) {
+	public Signal callTwitter(RequestParams params) {
 		logger.info(params.toString());
 		ResponseEntity<String> response = null;
 		

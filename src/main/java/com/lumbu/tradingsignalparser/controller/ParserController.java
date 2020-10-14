@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lumbu.tradingsignalparser.pojo.request.RequestParams;
+import com.lumbu.tradingsignalparser.pojo.trading.Signal;
 import com.lumbu.tradingsignalparser.service.TwitterService;
 
 /**
@@ -33,17 +34,17 @@ public class ParserController {
 
 	@GetMapping("/requestSignal")
 	@ResponseBody
-	public ResponseEntity<String> requestTwitterSignal(@RequestParam(name = "screen_name") String screenName,
+	public ResponseEntity<Object> requestTwitterSignal(@RequestParam(name = "screen_name") String screenName,
 			@RequestParam(name = "count") Integer count) {
-		String result = "";
+		Signal result = new Signal();
 		RequestParams params = new RequestParams(screenName, count);
-		ResponseEntity<String> response = null;
+		ResponseEntity<Object> response = null;
 		try {
 			result = twitterService.callTwitter(params);
-			response = new ResponseEntity<String>(result, HttpStatus.OK);
+			response = ResponseEntity.ok(result);
 		} catch (Exception e) {
 			logger.error(e.getMessage());
-			response = new ResponseEntity<String>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+			response = new ResponseEntity<Object>(e.getCause(), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return response;
 	}
