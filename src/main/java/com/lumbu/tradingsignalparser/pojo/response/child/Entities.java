@@ -2,6 +2,9 @@ package com.lumbu.tradingsignalparser.pojo.response.child;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Entities {
 	private List<HashTags> hashtags;
 
@@ -10,6 +13,9 @@ public class Entities {
 	private List<User_mentions> user_mentions;
 
 	private List<Urls> urls;
+
+	@JsonIgnore
+	private Object url;
 
 	private Description description;
 
@@ -43,6 +49,16 @@ public class Entities {
 
 	public List<Urls> getUrls() {
 		return this.urls;
+	}
+
+	@JsonIgnore
+	public Object getUrl() {
+		return url;
+	}
+
+	@JsonProperty
+	public void setUrl(Object url) {
+		this.url = url;
 	}
 
 	public void setDescription(Description description) {

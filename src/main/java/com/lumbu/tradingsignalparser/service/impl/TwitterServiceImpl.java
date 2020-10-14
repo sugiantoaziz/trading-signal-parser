@@ -18,6 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.lumbu.tradingsignalparser.helper.ParseHelper;
 import com.lumbu.tradingsignalparser.pojo.request.RequestParams;
 import com.lumbu.tradingsignalparser.pojo.response.Root;
 import com.lumbu.tradingsignalparser.pojo.response.TwitterMsg;
@@ -65,7 +66,9 @@ public class TwitterServiceImpl implements TwitterService {
 		}
 
 		// always get newest tweet
-		return root.getTwitterMsgs().get(0).getText();
+		String tweet = root.getTwitterMsgs().get(1).getText();
+		ParseHelper.getInstance();
+		return ParseHelper.parse(tweet);
 	}
 
 	@Bean

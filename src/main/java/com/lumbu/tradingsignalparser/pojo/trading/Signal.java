@@ -1,38 +1,29 @@
 package com.lumbu.tradingsignalparser.pojo.trading;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Signal {
+
+	// ex: EURUSD
 	private String instrument;
 
-	private String instruction;
+	// ex: buy or sell from 1.17960
+	private HashMap<String, BigDecimal> order;
 
-	public Signal() {
+	// ex: [tp1 1.18737, tp2 1.19026, tp3 1.19674]
+	private ArrayList<HashMap<String, BigDecimal>> takeProfit;
 
-	}
+	// ex: sl 1.16958
+	private BigDecimal stopLoss;
 
-	public Signal(String instrument, String instruction) {
-		this.instrument = instrument;
-		this.instruction = instruction;
-	}
-
-	public String getInstrument() {
-		return instrument;
-	}
-
-	public void setInstrument(String instrument) {
-		this.instrument = instrument;
-	}
-
-	public String getInstruction() {
-		return instruction;
-	}
-
-	public void setInstruction(String instruction) {
-		this.instruction = instruction;
-	}
-
-	@Override
-	public String toString() {
-		return "Signal [instrument=" + instrument + ", instruction=" + instruction + "]";
-	}
-
+	
 }
