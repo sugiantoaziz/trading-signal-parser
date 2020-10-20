@@ -67,7 +67,7 @@ public class TwitterServiceImpl implements TwitterService {
 		}
 
 		// always get newest tweet
-		String tweet = root.getTwitterMsgs().get(1).getText();
+		String tweet = root.getTwitterMsgs().get(0).getText();
 		ParseHelper.getInstance();
 		return ParseHelper.parse(tweet);
 	}

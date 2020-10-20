@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
 
 import com.lumbu.tradingsignalparser.pojo.trading.Signal;
 
+@Component
 public class ParseHelper {
 
 	private static ParseHelper helper;
@@ -47,6 +49,14 @@ public class ParseHelper {
 		takeProfit.add(parsedTp1);
 		takeProfit.add(parsedTp2);
 		takeProfit.add(parsedTp3);
+
+		/* kela */
+//		Signal signal = new Signal();
+//		SignalFactory signalFactory = new SignalFactory();
+//		TwitterSignal stellaSmith = signalFactory.getSignal("stella");
+//		signal = stellaSmith.parseSignal(tweet);
+//		TwitterSignal siArab = signalFactory.getSignal("arab");
+//		signal = siArab.parseSignal(tweet);
 
 		Signal signal = new Signal(instrument, parsedOrder, takeProfit, sl);
 		return signal;
