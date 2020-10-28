@@ -1,5 +1,7 @@
 package com.lumbu.tradingsignalparser.pojo.request;
 
+import java.util.ArrayList;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RequestParams {
-	private String screenName;
+	private ArrayList<String> screenNames;
 	
 	private Integer count;
 

@@ -3,6 +3,9 @@
  */
 package com.lumbu.tradingsignalparser.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +33,15 @@ public class ParserController {
 	@Autowired
 	private TwitterService twitterService;
 
-	Logger logger = LoggerFactory.getLogger(this.getClass());
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@GetMapping("/requestSignal")
 	@ResponseBody
-	public ResponseEntity<Object> requestTwitterSignal(@RequestParam(name = "screen_name") String screenName,
+	public ResponseEntity<Object> requestTwitterSignal(
+			@RequestParam(name = "screen_names") ArrayList<String> screenNames,
 			@RequestParam(name = "count") Integer count) {
-		Signal result = new Signal();
-		RequestParams params = new RequestParams(screenName, count);
+		List<Signal> result = new ArrayList<Signal>();
+		RequestParams params = new RequestParams(screenNames, count);
 		ResponseEntity<Object> response = null;
 		try {
 			result = twitterService.callTwitter(params);

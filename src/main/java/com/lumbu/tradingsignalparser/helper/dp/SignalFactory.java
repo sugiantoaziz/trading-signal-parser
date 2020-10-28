@@ -2,6 +2,7 @@ package com.lumbu.tradingsignalparser.helper.dp;
 
 import org.springframework.stereotype.Component;
 
+import com.lumbu.tradingsignalparser.constants.Constants;
 import com.lumbu.tradingsignalparser.helper.dp.impl.SiArab;
 import com.lumbu.tradingsignalparser.helper.dp.impl.StellaSmith;
 
@@ -10,10 +11,10 @@ public class SignalFactory {
 	public TwitterSignal getSignal(String username) {
 		TwitterSignal theSignal = null;
 		switch (username) {
-		case "forex1997":
+		case Constants.stella_smith:
 			theSignal = new StellaSmith();
 			break;
-		case "last_news_q8":
+		case Constants.si_arab:
 			theSignal = new SiArab();
 			break;
 		default:
