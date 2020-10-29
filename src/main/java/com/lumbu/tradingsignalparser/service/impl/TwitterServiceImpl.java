@@ -30,7 +30,7 @@ import com.lumbu.tradingsignalparser.service.TwitterService;
 @Service("twitterService")
 public class TwitterServiceImpl implements TwitterService {
 
-	static final String baseUri = "https://api.twitter.com/1.1/statuses/user_timeline.json";
+	private static final String baseUri = "https://api.twitter.com/1.1/statuses/user_timeline.json";
 
 	// change with your own twitter API token
 	private static final String token = "AAAAAAAAAAAAAAAAAAAAAFzAIQEAAAAAl27Dk4hypy4FBq7okAck%2BEUlY5g%3DtaZHqPmzpKosHxP9qJOKLXfcVMo3s7Sb3FC96d8JvLBXsSz2DP";
