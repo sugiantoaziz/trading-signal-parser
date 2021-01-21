@@ -26,12 +26,12 @@ public class ParseHelper {
 	public static List<Signal> parse(Map<String, String> tweets) {
 		List<Signal> signals = new ArrayList<Signal>();
 		SignalFactory signalFactory = new SignalFactory();
-		for (Map.Entry<String, String> tweet : tweets.entrySet()) {
+		tweets.forEach((k, v) -> {
 			Signal signal = new Signal();
-			TwitterSignal twitterSignal = signalFactory.getSignal(tweet.getKey());
-			signal = twitterSignal.parseSignal(tweet.getValue());
+			TwitterSignal twitterSignal = signalFactory.getSignal(k);
+			signal = twitterSignal.parseSignal(v);
 			signals.add(signal);
-		}
+		});
 		return signals;
 	}
 }

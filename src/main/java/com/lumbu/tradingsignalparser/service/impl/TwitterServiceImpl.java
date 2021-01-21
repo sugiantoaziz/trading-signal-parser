@@ -68,6 +68,7 @@ public class TwitterServiceImpl implements TwitterService {
 				}));// mapping response body content into pojo
 			} catch (Exception e) {
 				logger.error("Exception insertParametro[WS BO]: ", e);
+				break;
 			}
 
 			// always get newest tweet
